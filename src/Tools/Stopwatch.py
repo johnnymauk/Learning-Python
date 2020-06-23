@@ -9,10 +9,11 @@ class Stopwatch:
         start_time = time.perf_counter_ns()
         sorting_algorithm.sort(array)
         end_time = time.perf_counter_ns()
-        print(sorting_algorithm.get_name() +
-              ':\t'+random_array_specs.name+'\t:\t' +
-              '{:,} ns'.format(end_time - start_time))
-        return end_time - start_time
+        time_elapsed = end_time - start_time
+        # print(sorting_algorithm.get_name() +
+        #       ':\t'+random_array_specs.name+'\t:\t' +
+        #       '{:,} ns'.format(time_elapsed))
+        return time_elapsed
 
     @staticmethod
     def start_all(sorting_algorithm, set_seed=time.time()):

@@ -1,6 +1,18 @@
-from Tools.Stopwatch import Stopwatch
-from Tools.RandomArray import RandomArray
+from Tools import Stopwatch, RandomArray
 import SortingAlgorithms as SA
 
-# SA.Radix.find_max_digits(RandomArray.generate(RandomArray.SMALL.value, 23))
-print(SA.Radix.find_max_digits([100,1,2,3,4,5,6,7,8]))
+algorithm_list = [SA.Insertion, SA.Radix, SA.Quick]
+processing_time = []
+tests = 10
+
+
+for algorithm in algorithm_list:
+    for test in range(tests):
+        processing_time.append(Stopwatch.start(algorithm, RandomArray.SMALL, 23))
+    print(
+        algorithm.get_name() + "\n" +
+        "Min: {:,} ns".format(min(processing_time)) +
+        "\tMax: {:,} ns".format(max(processing_time)) +
+        "\tAvg: {:,.0f} ns".format(sum(processing_time)/tests)
+    )
+    processing_time.clear()

@@ -6,10 +6,10 @@ import time
 
 class RandomArray(Enum):
     # specs: [number_elements, range_min, range_max]
-    TINY = [10, 0, 100]
-    SMALL = [100, 0, 1000]
-    MEDIUM = [1000, 0, 10000]
-    # LARGE = [10000, 0, 100000]
+    SMALL = [10, 0, 100]
+    MEDIUM = [100, 0, 1000]
+    LARGE = [1000, 0, 10000]
+    MASSIVE = [100000, 0, 1000000]
 
     @staticmethod
     def generate(specs, seed_val=time.time()):

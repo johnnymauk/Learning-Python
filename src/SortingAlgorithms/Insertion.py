@@ -15,5 +15,6 @@ class Insertion(SAInterface):
                     if array[outer] <= array[inner]:
                         array.insert(inner, array.pop(outer))
                         break
+        return array
 
 Insertion.sort([1,2,3,5,6,8])

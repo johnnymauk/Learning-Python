@@ -9,8 +9,14 @@ class Radix(SAInterface):
 
     @staticmethod
     def sort(array):
-        max_digits = Radix.find_max_digits(array)
-        digit = 1
+        max_base = Radix.find_max_digits(array)
+        base = 10
+        while base < max_base:
+            # print('Base: ' + str(base))
+            test = Radix.buckets(array, base)
+            array = test
+            base *= 10
+        return array
 
     @staticmethod
     def find_max_digits(array):
@@ -21,16 +27,21 @@ class Radix(SAInterface):
                 base *= 10
                 index -= 1
             index += 1
-        return int(base/10)
+        return base
 
     @staticmethod
     def buckets(array, base):
-        buckets = [[],[],[],[],[],[],[],[],[],[]]
+        buckets = [[], [], [], [], [], [], [], [], [], []]
 
+        # print(array)
         for num in range(len(array)):
-            buckets[array%(base*10)] = num
+            # print(str(num) + " + " + str(base) + " + " + str(array[num]) + " + " + str((int(array[num]/base)) % 10) )
+            buckets[int(array[num]/base) % 10].append(array[num])
 
-        # for bucket in range(len(buckets)):
+        while len(buckets) > 1:
+            buckets[0].extend(buckets.pop(1))
+        buckets.extend(buckets.pop(0))
+        return buckets
 
 
-
+# Radix.sort([1, 23, 45, 123, 95, 11, 13, 54, 89, 109])
