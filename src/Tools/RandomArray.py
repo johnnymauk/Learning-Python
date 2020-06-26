@@ -20,3 +20,4 @@ class RandomArray(Enum):
         return array
 
 # print(RandomArray.generate([10, 0, 100] ))
+

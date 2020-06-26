@@ -20,10 +20,6 @@ class Quick(SAInterface):
             left = Quick.sort(left)
             left.extend(array[-1:])
             left.extend(Quick.sort(right))
-            # print(array)
-            # print(left)
-            # print(right)
-
             return left
         else:
             return array
